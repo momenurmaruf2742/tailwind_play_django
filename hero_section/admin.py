@@ -6,8 +6,9 @@ from . models import *
 class HeroButtonInline(admin.TabularInline):
     model = HeroButton
     extra = 1
+    fk_name = "hero_contant"
     # readonly_fields = ('hero_contant', 'title', 'svg')
-    can_delete = False
+  
 
 @admin.register(HeroContant)
 class HeroContantAdmin(admin.ModelAdmin):

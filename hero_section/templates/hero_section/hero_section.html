@@ -14,7 +14,9 @@ class="relative overflow-hidden bg-primary pt-[120px] md:pt-[130px] lg:pt-[160px
         <h1
           class="mb-6 text-3xl font-bold leading-snug text-white sm:text-4xl sm:leading-snug lg:text-5xl lg:leading-[1.2]"
         >
-          Open-Source Web Template for SaaS, Startup, Apps, and More
+        {% for cont in contant %}
+          {{ cont.title }}
+        {% endfor %}
         </h1>
         <p
           class="mx-auto mb-9 max-w-[600px] text-base font-medium text-white sm:text-lg sm:leading-[1.44]"

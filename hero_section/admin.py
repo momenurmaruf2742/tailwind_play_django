@@ -16,3 +16,13 @@ class HeroContantAdmin(admin.ModelAdmin):
     inlines = [HeroButtonInline]
     
     
+class TechnologySvgInline(admin.TabularInline):
+    model = TechnologySvg
+    extra = 1
+    fk_name = "contant"
+
+@admin.register(TechnologyUses)
+class TechnologyUsesAdmin(admin.ModelAdmin):
+    list_display = ('contant',)
+    inlines = [TechnologySvgInline]
+    

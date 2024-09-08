@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-6j)4fzhz82trs+35hwq^8w79d4u^xapy(jry(^9v#605$pu2*)
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ["*",".vercel.app"]
 
 
 # Application definition
@@ -88,12 +88,12 @@ WSGI_APPLICATION = 'play_tailwind_django.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
 
 
 # Password validation
@@ -143,3 +143,25 @@ MEDIA_URL="/media/"
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+# from pymongo.mongo_client import MongoClient
+# from pymongo.server_api import ServerApi
+# uri = "mongodb+srv://maruf:23/6m+ZV,8pP8Wp@cluster0.cfivetg.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
+# # Create a new client and connect to the server
+# client = MongoClient(uri, server_api=ServerApi('1'))
+# # Send a ping to confirm a successful connection
+# try:
+#     client.admin.command('ping')
+#     print("Pinged your deployment. You successfully connected to MongoDB!")
+# except Exception as e:
+#     print(e)
+
+DATABASES = {
+        'default': {
+            'ENGINE': 'djongo',
+            'NAME': 'tailwind',
+            'ENFORCE_SCHEMA': False,
+            'CLIENT': {
+                'host': 'mongodb+srv://maruf:rzkC0csfuemIGWKx@cluster0.cfivetg.mongodb.net/'
+            }  
+        }
+}

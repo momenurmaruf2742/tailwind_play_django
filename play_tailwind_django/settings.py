@@ -54,6 +54,10 @@ INSTALLED_APPS = [
     'hero_section',
     'pricing',
     'testimonial',
+    
+    # Editor
+    'django_quill',
+    
 ]
 
 MIDDLEWARE = [
@@ -90,12 +94,12 @@ WSGI_APPLICATION = 'play_tailwind_django.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
+}
 
 
 # Password validation
@@ -166,13 +170,13 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # except Exception as e:
 #     print(e)
 
-DATABASES = {
-        'default': {
-            'ENGINE': 'djongo',
-            'NAME': 'tailwind',
-            'ENFORCE_SCHEMA': False,
-            'CLIENT': {
-                'host': 'mongodb+srv://maruf:rzkC0csfuemIGWKx@cluster0.cfivetg.mongodb.net/'
-            }  
-        }
-}
+# DATABASES = {
+#         'default': {
+#             'ENGINE': 'djongo',
+#             'NAME': 'tailwind',
+#             'ENFORCE_SCHEMA': False,
+#             'CLIENT': {
+#                 'host': 'mongodb+srv://maruf:rzkC0csfuemIGWKx@cluster0.cfivetg.mongodb.net/'
+#             }  
+#         }
+# }

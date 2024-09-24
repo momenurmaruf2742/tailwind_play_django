@@ -2,6 +2,7 @@ from django.shortcuts import render
 from hero_section . models import HeroButton,HeroContant,TechnologyUses,TechnologySvg
 from feature.models import Feature,FeatureItem
 from about.models import About
+from cta.models import *
 # Create your views here.
 def homeHeroSection(request):
     # for hero section
@@ -14,7 +15,9 @@ def homeHeroSection(request):
     
     # for about section
     abouts = About.objects.prefetch_related('aboutbutton_set','aboutimage_set','experience_set').all()
-
+    
+    # for CTA section 
+    ctas = Cta.objects.prefetch_related('ctabutton_set').all()
     context = {
         "buttons":buttons,
         "contants":contants,
@@ -22,5 +25,6 @@ def homeHeroSection(request):
         "tech_images":tech_images,
         "features":features,
         "abouts": abouts,
+        "ctas": ctas,
     }
     return render(request,'home/index.html',context)

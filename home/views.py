@@ -4,6 +4,7 @@ from feature.models import Feature,FeatureItem
 from about.models import About
 from cta.models import *
 from pricing.models import Pricing,PricingFeature,PricingPlan
+from testimonial.models import Testimonial, TestimonialSection
 # Create your views here.
 def homeHeroSection(request):
     # for hero section
@@ -23,6 +24,9 @@ def homeHeroSection(request):
     # for Pricing 
     pricings = Pricing.objects.all()
     pricing_plans = PricingPlan.objects.prefetch_related('pricingfeature_set').all()
+    
+    testimonials = Testimonial.objects.all()
+    section_content = TestimonialSection.objects.first()
     context = {
         "buttons":buttons,
         "contants":contants,
@@ -33,5 +37,8 @@ def homeHeroSection(request):
         "ctas": ctas,
         "pricings": pricings,
         "pricing_plans":pricing_plans,
+        "testimonials":testimonials,
+        "section_content":section_content,
+        
     }
     return render(request,'home/index.html',context)

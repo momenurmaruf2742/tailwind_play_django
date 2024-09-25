@@ -3,6 +3,7 @@ from hero_section . models import HeroButton,HeroContant,TechnologyUses,Technolo
 from feature.models import Feature,FeatureItem
 from about.models import About
 from cta.models import *
+from pricing.models import Pricing,PricingFeature,PricingPlan
 # Create your views here.
 def homeHeroSection(request):
     # for hero section
@@ -18,6 +19,10 @@ def homeHeroSection(request):
     
     # for CTA section 
     ctas = Cta.objects.prefetch_related('ctabutton_set').all()
+    
+    # for Pricing 
+    pricings = Pricing.objects.all()
+    pricing_plans = PricingPlan.objects.prefetch_related('pricingfeature_set').all()
     context = {
         "buttons":buttons,
         "contants":contants,
@@ -26,5 +31,7 @@ def homeHeroSection(request):
         "features":features,
         "abouts": abouts,
         "ctas": ctas,
+        "pricings": pricings,
+        "pricing_plans":pricing_plans,
     }
     return render(request,'home/index.html',context)

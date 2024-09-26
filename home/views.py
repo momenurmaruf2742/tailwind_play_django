@@ -39,6 +39,7 @@ def homeHeroSection(request):
         "pricing_plans":pricing_plans,
         "testimonials":testimonials,
         "section_content":section_content,
+        "star_range": range(1, 6),
         
     }
     return render(request,'home/index.html',context)

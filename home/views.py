@@ -5,6 +5,7 @@ from about.models import About
 from cta.models import *
 from pricing.models import Pricing,PricingFeature,PricingPlan
 from testimonial.models import Testimonial, TestimonialSection
+from faq_team.models import FaqSection,FaqQuestion,TeamSection,TeamMember
 # Create your views here.
 def homeHeroSection(request):
     # for hero section
@@ -27,6 +28,13 @@ def homeHeroSection(request):
     
     testimonials = Testimonial.objects.all()
     section_content = TestimonialSection.objects.first()
+    
+    # faq and team
+    faqs = FaqSection.objects.all()
+    questions = FaqQuestion.objects.all()
+    teams = TeamSection.objects.all()
+    team_members = TeamMember.objects.prefetch_related('teammembersociallink_set').all()
+    
     context = {
         "buttons":buttons,
         "contants":contants,
@@ -40,6 +48,10 @@ def homeHeroSection(request):
         "testimonials":testimonials,
         "section_content":section_content,
         "star_range": range(1, 6),
+        "faqs":faqs,
+        "questions":questions,
+        "teams":teams,
+        "team_members":team_members,
         
     }
     return render(request,'home/index.html',context)
